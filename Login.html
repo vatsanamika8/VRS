@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Login Page</title>
+	<style>
+	.header 
+	{
+		padding: 20px; 
+    	text-align: center;
+    	background-color: yellow;
+    	color: red;
+	}
+	.footer
+	{
+ 		padding: 20px; 
+  		text-align: center; 
+  		background-color: white;
+	}
+	button 
+	{   
+       background-color: #4CAF50;   
+       width: 5%;  
+        color: orange;   
+        padding: 10px;   
+        margin: 10px 0px;   
+        border: none;   
+        cursor: pointer;   
+    }   
+ 	form 
+ 	{   
+        border: 3px solid #f1f1f1;   
+    }   
+ 	input[type=text], input[type=password] 
+ 	{   
+        width: 15%;   
+        margin: 8px 0;  
+        padding: 1px;   
+        display: inline-block;   
+        border: 2px solid green;   
+        box-sizing: border-box;   
+    }  
+ 	button:hover 
+ 	{   
+        opacity: 0.7;   
+    }   
+  	.cancelbtn 
+  	{   
+        width: auto;   
+        padding: 10px 18px;  
+        margin: 10px 5px;  
+    }   
+        
+     
+ 	.container 
+ 	{   
+        padding: 25px;   
+        background-color: white;  
+    }   
+	</style>
+</head>
+<body bgcolor="white" width=10000 height=1000>
+
+
+	<div class="header">
+		<marquee><font color="red"><h1>Vehicle Rental System</h1></font></marquee>
+		<a href="home.html">Home</a>
+		<a href="Login.html">Login</a>
+		<a href="Registration.html">Registration</a>
+		<a href="Vehicles.html">Vehicles</a>
+		<a href="Profile.html">Profile</a>
+		<a href="Feedback.html">Feedback</a>
+	</div>
+	
+	<center><h2 font color="red">Login Page</h2></center>
+ 	<!-----------------form-------------->
+    <form >  
+        <div class="container">   
+            <label for="email">E-mail : </label>   
+            <input type="email" placeholder="email" name="username" required> <br>
+            <label>Password : </label>   
+            <input type="password" placeholder="Enter Password" name="password" required>  <br>
+            <button type="submit">Login</button>
+            <button type="button" class="cancelbtn"> Cancel</button>   <br>
+            <input type="checkbox" checked="checked"> Remember me   <br>
+            
+            Forgot <a href="#"> password? </a>   
+        </div>   
+    </form>   
+
+
+    <!-------------footer------------------>  
+
+
+	<div class="footer">
+  		&COPY:Copyright 2020 by Anamika Vats
+	</div>
+	
+</body>
+	
+
+
+</html>
