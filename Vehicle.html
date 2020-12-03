@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vehicle Stocks</title>
+</head>
+
+<script>
+        function loadOfferXML() {
+		  var xhttp = new XMLHttpRequest();
+		  xhttp.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+			  displayOffersTable(this);
+			}
+		  };
+		  xhttp.open("GET", "Vehicles.xml", true);
+		  xhttp.send();
+        }
+        
+		function displayOffersTable(xml) {
+		  var i;
+		  var xmlDoc = xml.responseXML;
+		  var table="<tr><th>Model</th>"+
+                    "<th>Color</th>"+
+                    "<th>Price ( Rs. )</th>"+
+                    "<th>Mileage</th>"+
+                    "<th>Availability</th></tr>";
+		  var x = xmlDoc.getElementsByTagName("Car");
+		  var y = xmlDoc.getElementsByTagName("Bike");
+		  for (i = 0; i <x.length; i++) { 
+			table += "<tr><td>" +
+			x[i].getElementsByTagName("Model")[0].childNodes[0].nodeValue +
+			"</td><td>" +
+			x[i].getElementsByTagName("Color")[0].childNodes[0].nodeValue +
+			"</td><td>" +
+			x[i].getElementsByTagName("Price")[0].childNodes[0].nodeValue +
+			"</td><td>" +
+			x[i].getElementsByTagName("Mileage")[0].childNodes[0].nodeValue +
+			"</td><td>" +
+			x[i].getElementsByTagName("Availability")[0].childNodes[0].nodeValue +
+			"</td></tr>";
+		  }
+		  document.getElementById("car-table").innerHTML = table;
+          
+          var table="<tr><th>Model</th>"+
+                    "<th>Color</th>"+
+                    "<th>Price ( Rs. )</th>"+
+                    "<th>Mileage</th>"+
+                    "<th>Availability</th></tr>";
+          for (i = 0; i <y.length; i++) { 
+			table += "<tr><td>" +
+			y[i].getElementsByTagName("Model")[0].childNodes[0].nodeValue +
+			"</td><td>" +
+			y[i].getElementsByTagName("Color")[0].childNodes[0].nodeValue +
+			"</td><td>" +
+			y[i].getElementsByTagName("Price")[0].childNodes[0].nodeValue +
+			"</td><td>" +
+			y[i].getElementsByTagName("Mileage")[0].childNodes[0].nodeValue +
+			"</td><td>" +
+			y[i].getElementsByTagName("Availability")[0].childNodes[0].nodeValue +
+			"</td></tr>";
+		  }
+          document.getElementById("bike-table").innerHTML = table;
+        }
+</script>
+<style>
+            .center{
+                margin-top: 35px;
+                align-items: center;
+                text-align: center;
+            }
+
+            h1{
+                color: orangered;
+            }
+            h2{
+                color: yellowgreen;
+            }
+            h3{
+                color: royalblue;
+            }
+            td{
+                font-weight:bolder;
+                background-color: violet;
+                text-align: center;
+            }
+            th{
+                color:black;
+                background-color: bisque;
+            }
+            table{
+                width:50%; 
+                border:3px solid white; 
+                color: black; 
+                margin-left: auto; 
+                margin-right: auto; 
+                padding: 5px;
+            }
+            tr{
+                width:50%; 
+                border:3px solid black; 
+                color: black; 
+                margin-left: auto; 
+                margin-right: auto; 
+                padding: 5px;
+            }
+            .header 
+                {
+                    padding: 20px; 
+                    text-align: center;
+                    background-color: yellow;
+                    color: red;
+                }
+                .footer
+                {
+                    margin-top: 300px;
+                    padding: 20px; 
+                    text-align: center; 
+                    background-color: white;
+                }
+        </style>
+
+<body>
+    <div class="header">
+		<marquee><font color="red"><h1>Vehicle Rental System</h1></font></marquee>
+		<a href="home.html">Home</a>
+		<a href="Login.html">Login</a>
+		<a href="Registration.html">Registration</a>
+		<a href="Vehicles.html">Vehicles</a>
+		<a href="Profile.html">Profile</a>
+		<a href="Feedback.html">Feedback</a>
+    </div>
+    
+    <div class="center">
+        <a class="cta"><button onclick="loadOfferXML()">Show Vehicles</button></a>
+    </div>
+
+    <table id="car-table"></table>
+    <table id="bike-table"></table>
+    
+    <!---Adding the footer------>
+    <div class="footer" >
+        &COPY:Copyright 2020 by Anamika Vats
+        <address>
+          email: <a href="mailto:ar8160@srmist.edu.in">ar8160@srmist.edu.in</a>.<br>
+        </address>
+    </div>
+</body>
+</html>    
+    
+    
+    

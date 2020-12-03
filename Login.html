@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 	<title>Login Page</title>
 	<style>
 	.header 
@@ -20,7 +22,7 @@
 	{   
        background-color: #4CAF50;   
        width: 5%;  
-        color: orange;   
+        color: black;   
         padding: 10px;   
         margin: 10px 0px;   
         border: none;   
@@ -28,7 +30,7 @@
     }   
  	form 
  	{   
-        border: 3px solid #f1f1f1;   
+        border: 3px ;   
     }   
  	input[type=text], input[type=password] 
  	{   
@@ -54,13 +56,35 @@
  	.container 
  	{   
         padding: 25px;   
-        background-color: white;  
+       background: "https://img.etimg.com/photo/msid-68721421,quality-100/nature.jpg"	;
     }   
 	</style>
+	<script>  
+	async function validateUser(){
+		form = document.getElementById("form");
+		form.addEventListener("submit", e => {
+			e.preventDefault();
+		});
+		await axios.get("http://localhost:1337/logins")
+		.then(function(response){
+			var data = response.data
+			data.forEach(d => {
+				var email = d.Email;
+				var password = d.Password;
+				// console.log(email, password)
+				if(email===form.username.value && password===form.password.value){
+					window.location.href="http://127.0.0.1:5500/home.html"
+				}
+			})
+			document.getElementById("valid").innerHTML="INVALID CREDENTIALS!!!!!!!"
+		})
+	}
+
+	</script> 
 </head>
-<body bgcolor="white" width=10000 height=1000>
 
 
+<body background="https://img.etimg.com/photo/msid-68721421,quality-100/nature.jpg">
 	<div class="header">
 		<marquee><font color="red"><h1>Vehicle Rental System</h1></font></marquee>
 		<a href="home.html">Home</a>
@@ -70,33 +94,26 @@
 		<a href="Profile.html">Profile</a>
 		<a href="Feedback.html">Feedback</a>
 	</div>
-	
 	<center><h2 font color="red">Login Page</h2></center>
- 	<!-----------------form-------------->
-    <form >  
+    <form align="center" class="login_form" id="form">  
         <div class="container">   
             <label for="email">E-mail : </label>   
-            <input type="email" placeholder="email" name="username" required> <br>
+            <input type="text" placeholder="email" name="username" required> <br><br> 
             <label>Password : </label>   
-            <input type="password" placeholder="Enter Password" name="password" required>  <br>
-            <button type="submit">Login</button>
-            <button type="button" class="cancelbtn"> Cancel</button>   <br>
-            <input type="checkbox" checked="checked"> Remember me   <br>
-            
+            <input type="password" placeholder="Enter Password" name="password" required>  <br><br>
+			<input type="submit" onclick="validateUser()">
+            <button type="button" class="cancelbtn"> Cancel</button>   <br><br>
+            <input type="checkbox" checked="checked"> Remember me   <br><br>
             Forgot <a href="#"> password? </a>   
-        </div>   
+		</div>   
+		<div id="valid"></div>
     </form>   
-
-
-    <!-------------footer------------------>  
-
 
 	<div class="footer">
   		&COPY:Copyright 2020 by Anamika Vats
+  		<address>
+			email: <a href="mailto:ar8160@srmist.edu.in">ar8160@srmist.edu.in</a>.<br>
+		</address>
 	</div>
-	
 </body>
-	
-
-
 </html>

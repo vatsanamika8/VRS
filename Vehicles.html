@@ -2,6 +2,7 @@
 <html>
 <head>
 	<title>Vehicles Info Page</title>
+	<script src = "https://unpkg.com/axios/dist/axios.min.js"></script>
 	<style>
 	.header 
 	{
@@ -16,9 +17,111 @@
   		text-align: center; 
   		background-color: white;
 	}
+
+	table,th, td{
+		border: 1px solid black;
+	}
+
+	tr, td, th{
+		padding: 20px;
+	}
+	input{
+		margin-left: 140px;
+		margin-top: 10px;
+	}
+
+	label{
+		float: right;
+		font-weight: bold;
+		margin-top: 10px;
+		margin-right: 710px;
+	}
+	input:hover{
+		background-color: lightcyan;
+	}
 	</style>
+
+
+<script>
+
+	async function fetchData(){
+		const table = document.getElementById("serverData")
+		const td = document.createElement("td")
+		const tr = document.createElement("tr")
+		await axios.get("http://localhost:1337/Vehicles-Infos")
+		.then(function(response){
+			var data = response.data;
+			console.log(data)
+
+
+			let table = document.querySelector("table");
+			for(let element of data){
+				let row = table.insertRow()
+				usefulData = {
+					ID_: element["id"],
+					Type_: element["VehicleType"],
+					Model_: element["VehicleModel"],
+					ShopName_: element["ShopName"],
+					Cost_: element["CostPerDay"],
+					Availability_ : element["Availability"]
+				}
+				for(key in usefulData){
+					let cell = row.insertCell();
+					let text = document.createTextNode(usefulData[key]);
+					cell.appendChild(text);
+				}
+			}
+		})
+
+	}
+
+
+
+
+
+	function addNewProduct(){
+		form = document.getElementById("form");
+		form.addEventListener("submit", e => {
+			e.preventDefault();
+		});
+		vType = form.type.value
+		vCost = form.cost.value
+		vAvail = form.availability.value
+		vModel = form.model.value
+		shopName = form.shop.value
+		console.log(vType, vCost, vAvail, vModel, shopName)
+		axios.post("http://localhost:1337/Vehicles-Infos", {
+			"VehicleType": vType,
+			"VehicleModel": vModel,
+			"ShopName" : shopName,
+			"CostPerDay": vCost,
+			"Availability": vAvail
+		})
+		.then(function (response){
+			console.log(response.data)
+		})
+
+	}
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </head>
-<body bgcolor="white" width=10000 height=1000>
+<body bgcolor="white" width=10000 height=1000 onload="fetchData()">
 
 	<div class="header">
 		<marquee><font color="red"><h1>Vehicle Rental System</h1></font></marquee>
@@ -31,6 +134,75 @@
 	</div>
 	
 	<h2 font color="red"></h2>
+
+	<table  background="https://cdn.pixabay.com/photo/2016/08/19/19/49/background-1606047_960_720.jpg" style="width:50%; align-items: center; margin-left: 250px;" id="serverData">
+		<tr>
+			<th>Vehicle ID</th>
+			<th>Type</th>
+			<th>Vehicle Model</th>
+			<th>Shop Name</th>
+			<th>Cost per day</th>
+			<th>Availability</th>
+		</tr>
+	</table>
+
+	<form id = "form" class="container" style=" margin-left: 350px; margin-top: 25px; text-align: left;">
+		<div>
+			<label>Vehicle Type</label>
+			<input type="text" name="type" placeholder="Vehicle Type"/>
+		</div>
+		<div>
+			<label>Vehicle Model</label>
+			<input type="text"  name="model" placeholder="Vehicle Model"/>
+		</div>
+		<div>
+			<label>Shop Name</label>
+			<input type="text" name="shop" placeholder="Shop Name"/>
+		</div>
+		<div>
+			<label>Cost Per Day</label>
+			<input type="text" name="cost" placeholder="Cost Per Day"/>
+		</div>
+		<div>
+			<label>Availability</label>
+			<input type="text" name="availability" placeholder="Availability"/>
+		</div>
+
+		<input type="submit" onclick="addNewProduct()" style="text-align: center; margin-left: 200px; margin-top: 20px;"/>
+		
+	</form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 	<!---Adding the video------>
@@ -47,6 +219,9 @@
 	<!---Adding the footer------>
 	<div class="footer" >
   		&COPY:Copyright 2020 by Anamika Vats
+  		<address>
+			email: <a href="mailto:ar8160@srmist.edu.in">ar8160@srmist.edu.in</a>.<br>
+		</address>
 	</div>
 	
 </body>

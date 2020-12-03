@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Feedback Page</title>
+	<meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Feedback Form</title>
 	<style>
 	.header 
 	{
@@ -29,16 +31,98 @@
 		<a href="Profile.html">Profile</a>
 		<a href="Feedback.html">Feedback</a>
 	</div>
-	<font color="yellow"><h1 style="text-align:center;">Feedback page</h1></font>
-	<font color="black"><h2>This is feedback page</h2>
+        <style>
+            fieldset {
+            background-color: white;
+            margin-bottom: 20px;
+            }
+            legend {
+            background-color: rebeccapurple;
+            color: white;
+            padding: 5px 10px;
+            }
+            input {
+            margin: 5px;          
+            height: 20px;
+            }
+            .main input{
+                float: right;
+                margin-right: 1325px;
+                margin-top: -5px;
+            }
+            input:hover{
+                background-color: lightgreen;
+            }
+        </style>
+        
+        <h1 style="text-align: center;">Application Form</h1>
+        <form style="margin-top: 100px;">
+            <fieldset class="main">
+                <legend>Personal Information:</legend>
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name"><br><br>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email"><br><br>
+                <label for="member_id">Member ID:</label>
+                <input type="text" id="skype" name="skype"><br><br>
+                
+            </fieldset>
+
+            <fieldset>
+                <legend>Complaint Information</legend>
+                <label for="query_complaintType">Which kind of feedback you want to give?</label>
+                <div class="checkboxes">
+                    <input type="checkbox" name="positive" value="positive">
+                    <label for = "positive">positive</label>
+                    <input type="checkbox" name="negative" value="negative">
+                    <label for = "negative">negative</label>
+                    <input type="checkbox" name="semipositive" value="semipositive">
+                    <label for = "semipositive">semipositive</label>
+                    <input type="checkbox" name="seminegative" value="seminiegative">
+                    <label for = "seminegative">seminegative</label>
+                    <input type="checkbox" name="other" value="other">
+                    <label for = "other">Other?</label>
+                    <input type="text" name="others" style="width: 30%;">            
+                </div>
+
+                <div style="margin-top: 30px;"><label for="query_clients">Who are you ?</label></div>
+                <div class="checkboxes">
+                	<input type="radio" name="vehiclerenter" value="vehiclerenter">
+                    <label for = "vehiclerenter">Vehicle Renter</label>
+                    <input type="radio" name="vehiclerenter" value="vehicleowner">
+                    <label for = "vehicleowner">Vehicle Owner</label>
+                  
+                </div>
+
+               
+            </fieldset>
+
+            <div><label for="query_training" style="font-weight: bold;">What kind of problem you faced:</label></div>
+            <select name="area" id="area">
+                <option value="dented">Dented Product</option>
+                <option value="late">Late delivery</option>
+                <option value="behaviour">Bad behaviour</option>
+                <option value="fraud">Fraud</option>
+            </select>
+        </form>
+   
+		<form align="center">
+			<h1>Description:</h1><br/>
+			<textarea rows="15" cols="75" name="description">Enter your feedback</textarea><br>
+			<input type="submit" name="submit" value="Submit" >
+		</form>
+
 
 
 	 
-	 
+
 
 	 <!---Adding the footer------>
 	<div class="footer">
   		&COPY:Copyright 2020 by Anamika Vats
+  		<address>
+			email: <a href="mailto:ar8160@srmist.edu.in">ar8160@srmist.edu.in</a>.<br>
+		</address>
 	</div>
 
 	

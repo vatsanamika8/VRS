@@ -1,0 +1,52 @@
+<?xml version = "1.0" encoding = "UTF-8" ?>
+<?xml-stylesheet type = "text/xsl" href = "Vehicles.xslt"?>
+<Vehicles>
+    <Car>
+        <Model>Maruti Baleno</Model>
+        <Color>Green</Color>
+        <Price>1000</Price>
+        <Mileage>20</Mileage>
+        <Availability>No</Availability>
+    </Car>
+
+    <Car>
+        <Model>Maruti S-Cross</Model>
+        <Color>Black</Color>
+        <Price>2500</Price>
+        <Mileage>21</Mileage>
+        <Availability>Yes</Availability>
+    </Car>
+
+    <Car>
+        <Model>Hyundai i20</Model>
+        <Color>Red</Color>
+        <Price>1500</Price>
+        <Mileage>21.5</Mileage>
+        <Availability>No</Availability>
+    </Car>
+    
+    <Bike>
+        <Model>Bajaj Pulsar 125</Model>
+        <Color>Black</Color>
+        <Price>500</Price>
+        <Mileage>62</Mileage>
+        <Availability>Yes</Availability>
+    </Bike>
+
+    <Bike>
+        <Model>Royal Enfield Meteor 350</Model>
+        <Color>Brown</Color>
+        <Price>1000</Price>
+        <Mileage>55</Mileage>
+        <Availability>No</Availability>
+    </Bike>
+
+    <Bike>
+        <Model>Honda CB Shine</Model>
+        <Color>Red</Color>
+        <Price>800</Price>
+        <Mileage>65</Mileage>
+        <Availability>Yes</Availability>
+    </Bike>
+
+</Vehicles>
